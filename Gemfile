@@ -4,6 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.1'
 
 gem 'devise'
+gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
+gem 'acts_as_votable', '~> 0.12.0'
+gem 'acts_as_commentable'
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
