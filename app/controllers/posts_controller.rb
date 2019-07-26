@@ -31,6 +31,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    binding.pry
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to root_path, notice: 'Post was successfully updated.' }

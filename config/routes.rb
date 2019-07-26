@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  resources :posts
-  devise_for :users
   root to: 'home#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :posts
+
+  devise_for :users
+
+  resources :comments, only: [:create, :destroy]
+
+  match :unlike, to: 'likes#destroy', as: :unlike, via: :post
+  match :like, to: 'likes#create', as: :like, via: :post
 end
