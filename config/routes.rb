@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :posts
 
   scope :users, controller: :users, as: :users do
+    get '/', action: :index, as: ''
     get :profile, action: :profile, as: :profile
     get :own_posts, action: :own_posts, as: :own_posts
   end
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:create, :destroy]
 
+  match :follow, to: 'follows#create', as: :follow, via: :post
+  match :unfollow, to: 'follows#destroy', as: :unfollow, via: :post
   match :unlike, to: 'likes#destroy', as: :unlike, via: :post
   match :like, to: 'likes#create', as: :like, via: :post
 end

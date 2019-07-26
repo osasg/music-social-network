@@ -9,4 +9,5 @@ class User < ApplicationRecord
   acts_as_followable
 
   has_many :posts
+  has_many :comments
 end

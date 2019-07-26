@@ -1,25 +1,25 @@
 <p id="notice"><%= notice %></p>
 
+<h2><%= @post.user.name %></h2>
+
 <p>
-  <strong>Attachment:</strong>
   <%= @post.attachment %>
 </p>
 
 <p>
-  <strong>Content:</strong>
   <%= @post.content %>
 </p>
 
 <div class="row">
   <div class="col-md-12">
-    <h1>Likes</h1>
+    <%= pluralize(@post.get_likes.size, 'like') %>
     <%= render 'likes/form', likeable: @post %>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <h1>Comments</h1>
+    <h4>Comments</h4>
     <%= render 'comments/form', commentable: @post %>
     <%= render @post.comments %>
   </div>
