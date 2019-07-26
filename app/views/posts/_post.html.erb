@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+    <p class="post-author"><%= post.user.name %></p>
+    <p class="post-content"><%= post.content %></p>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'likes/form', likeable: post %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Comments</h3>
+        <%= render 'comments/form', commentable: post %>
+        <%= render post.comments %>
+      </div>
+    </div>
+  </div>
+</div>

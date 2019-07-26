@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'acts_as_votable', '~> 0.12.0'

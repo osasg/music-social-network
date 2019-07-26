@@ -1,1 +1,7 @@
 <h1>Home</h1>
+
+<div class="container">
+  <% if @posts.present? && current_user.present? %>
+    <%= render @posts %>
+  <% end %>
+</div>
