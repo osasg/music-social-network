@@ -7,6 +7,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
+        <%= link_to 'My posts', users_own_posts_path, class: 'dropdown-item', class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
         <%= link_to 'New post', new_post_path, class: 'dropdown-item', class: 'nav-link' %>
       </li>
       <% if user_signed_in? %>
@@ -15,6 +18,7 @@
             Me
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'Profile', users_profile_path, class: 'dropdown-item' %>
             <div class="dropdown-divider"></div>
             <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
           </div>

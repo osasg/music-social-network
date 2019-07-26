@@ -3,6 +3,11 @@ Rails.application.routes.draw do
 
   resources :posts
 
+  scope :users, controller: :users, as: :users do
+    get :profile, action: :profile, as: :profile
+    get :own_posts, action: :own_posts, as: :own_posts
+  end
+
   devise_for :users
 
   resources :comments, only: [:create, :destroy]
