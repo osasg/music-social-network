@@ -1,7 +1,7 @@
 module MusicSocialNetwork
   module RegistrationsControllerDecorator
     def create
-      @user = user.new(user_params)
+      @user = User.new(user_params)
 
       respond_to do |format|
         if @user.save

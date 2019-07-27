@@ -1,29 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="card p-4">
+  <strong><%= @post.user.name %></strong>
+  <hr>
 
-<h2><%= @post.user.name %></h2>
-
-<p>
   <%= @post.attachment %>
-</p>
+  <div class="alert alert-info">
+    <%= @post.content %>
+  </div>
 
-<p>
-  <%= @post.content %>
-</p>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'music_social_network/likes/form', likeable: @post %>
+      <%= pluralize(@post.get_likes.size, 'like') %>
+    </div>
+  </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <%= pluralize(@post.get_likes.size, 'like') %>
-    <%= render 'music_social_network/likes/form', likeable: @post %>
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Comments</h4>
+      <%= render 'music_social_network/comments/form', commentable: @post %>
+      <%= render @post.comments %>
+    </div>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-md-12">
-    <h4>Comments</h4>
-    <%= render 'music_social_network/comments/form', commentable: @post %>
-    <%= render @post.comments %>
-  </div>
-</div>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>

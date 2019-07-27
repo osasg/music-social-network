@@ -1,5 +1,5 @@
-<h3>
-  <%= link_to post_path(activity.trackable.id) do %>
+<h3 class="alert alert-warning text-center">
+  <%= link_to post_path(activity.trackable.id), class:"alert-warning" do %>
     New post from <%= activity.owner.name %>
   <% end %>
 </h3>

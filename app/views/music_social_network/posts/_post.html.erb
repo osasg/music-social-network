@@ -1,12 +1,13 @@
-<div class="row">
+<div class="row card p-4">
   <div class="col-md-12">
-    <p class="post-author"><%= post.user.name %></p>
-    <p class="post-content"><%= post.content %></p>
+    <h3 class="post-author"><%= post.user.name %></h3>
+    <hr>
+    <p class="post-content alert alert-info"><%= post.content %></p>
 
     <div class="row">
       <div class="col-md-12">
-        <%= pluralize(post.get_likes.size, 'like') %>
         <%= render 'music_social_network/likes/form', likeable: post %>
+        <%= pluralize(post.get_likes.size, 'like') %>
       </div>
     </div>
 
