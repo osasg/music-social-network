@@ -13,14 +13,14 @@
 <div class="row">
   <div class="col-md-12">
     <%= pluralize(@post.get_likes.size, 'like') %>
-    <%= render 'likes/form', likeable: @post %>
+    <%= render 'music_social_network/likes/form', likeable: @post %>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
     <h4>Comments</h4>
-    <%= render 'comments/form', commentable: @post %>
+    <%= render 'music_social_network/comments/form', commentable: @post %>
     <%= render @post.comments %>
   </div>
 </div>
