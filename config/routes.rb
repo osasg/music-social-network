@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   scope module: :music_social_network do
-    root to: 'home#index'
+    authenticated :user do
+      root to: 'home#index'
+    end
+
+    unauthenticated :user do
+      root to: 'home#guest'
+    end
 
     resources :posts
 

@@ -1,8 +1,17 @@
-<div class="row card p-4">
+<div class="container card p-4 mb-4" style="width: 32rem;">
   <div class="col-md-12">
-    <h3 class="post-author"><%= post.user.name %></h3>
+    <h3 class="post-author">
+      <%= post.user.name %>
+      <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-success' %>
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure'}, class: 'btn btn-danger' %>
+    </h3>
     <hr>
-    <p class="post-content alert alert-info"><%= post.content %></p>
+    <div class="post-content alert alert-info">
+       <audio controls style="width: 100%;">
+        <source src="<%= post.attachment.url %>">
+      </audio> 
+      <p><%= post.content %></p>
+    </div>
 
     <div class="row">
       <div class="col-md-12">
@@ -11,9 +20,9 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-4">
       <div class="col-md-12">
-        <h3>Comments</h3>
+        <h5>Comments</h5>
         <%= render 'music_social_network/comments/form', commentable: post %>
         <%= render post.comments %>
       </div>

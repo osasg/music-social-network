@@ -2,6 +2,7 @@ module MusicSocialNetwork
   class PostsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action :check_access, only: [:edit, :update, :destroy]
 
     def index
       @posts = Post.all
@@ -45,7 +46,11 @@ module MusicSocialNetwork
     end
 
     def destroy
+      activities = PublicActivity::Activity.where(trackable_id: @post.id);
+
+      activities.destroy_all
       @post.destroy
+
       respond_to do |format|
         format.html { redirect_to root_path, notice: 'Post was successfully destroyed.' }
         format.json { head :no_content }
@@ -59,6 +64,12 @@ module MusicSocialNetwork
 
       def post_params
         params.require(:post).permit(:attachment, :content)
+      end
+
+      def check_access
+        unless current_user.posts.where(id: params[:id]).first.present?
+          redirect_to request.referer
+        end
       end
   end
 end
