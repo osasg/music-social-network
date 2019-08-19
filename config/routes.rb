@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
+
   scope module: :music_social_network do
     authenticated :user do
       root to: 'home#index'

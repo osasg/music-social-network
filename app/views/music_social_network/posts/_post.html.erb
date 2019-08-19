@@ -2,8 +2,10 @@
   <div class="col-md-12">
     <h3 class="post-author">
       <%= post.user.name %>
-      <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-success' %>
-      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure'}, class: 'btn btn-danger' %>
+      <% if current_user.posts.include? post %>
+        <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-success' %>
+        <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure'}, class: 'btn btn-danger' %>
+      <% end %>
     </h3>
     <hr>
     <div class="post-content alert alert-info">
@@ -16,7 +18,7 @@
     <div class="row">
       <div class="col-md-12">
         <%= render 'music_social_network/likes/form', likeable: post %>
-        <%= pluralize(post.get_likes.size, 'like') %>
+        <span class="likeable-count-<%= post[:id] %>"><%= post.get_likes.size %></span>
       </div>
     </div>
 
@@ -28,4 +30,14 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', function () {
+      const post = {
+        id: <%= post.id %>
+      };
+
+      App.register_like_stream(post);
+      App.register_unlike_stream(post);
+    });
+  </script>
 </div>
